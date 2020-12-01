@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 4) do
+
+  create_table "gift_items", force: :cascade do |t|
+    t.integer "store_id"
+    t.integer "gift_id"
+  end
 
   create_table "gifts", force: :cascade do |t|
     t.string "name"
