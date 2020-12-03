@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 2020_12_01_220901) do
 
   create_table "gift_items", force: :cascade do |t|
     t.integer "store_id"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 4) do
   create_table "gifts", force: :cascade do |t|
     t.string "name"
     t.float "price"
-    t.string "type"
+    t.string "gift_type"
   end
 
   create_table "malls", force: :cascade do |t|
