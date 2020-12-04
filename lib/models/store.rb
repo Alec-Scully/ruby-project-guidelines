@@ -10,8 +10,16 @@ class Store < ActiveRecord::Base
             Store.all.map do |s| 
                 menu.choice s.name, s
             end
+            menu.choice "Back", "Back"
+            menu.choice "Exit", "Exit"
         end
-        selected_store
+        if selected_store == "Back"
+            Run.main_menu
+        elsif selected_store == "Exit"
+            exit
+        else
+            selected_store
+        end
     end
 
     def self.close_store
@@ -19,10 +27,18 @@ class Store < ActiveRecord::Base
             Store.all.map do |s| 
                 menu.choice s.name, s
             end
+            menu.choice "Back", "Back"
+            menu.choice "Exit", "Exit"
         end
-        puts "#{selected_store.name} has been closed!"
-        selected_store.gift_items.destroy
-        selected_store.destroy
+        if selected_store == "Back"
+            Run.main_menu
+        elsif selected_store == "Exit"
+            exit
+        else
+            puts "#{selected_store.name} has been closed!"
+            selected_store.gift_items.destroy
+            selected_store.destroy
+        end
     end
 
     def self.create_store

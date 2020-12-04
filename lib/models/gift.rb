@@ -58,7 +58,6 @@ class Gift < ActiveRecord::Base
         end
         GiftItem.create(store_id: selected_store.id, gift_id: selected_item.id)
         puts "#{selected_item.name} has been added to the iventory of #{selected_store.name}."
-        selected_item
     end
 
     def self.remove_item(selected_store)
