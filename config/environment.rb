@@ -7,3 +7,5 @@ require_rel '../lib'
 require_rel '../bin'
 
 ActiveRecord::Base.logger = nil
+# config.active_record.logger = nil
+# ActiveRecord::Base.logger = 1

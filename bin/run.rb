@@ -23,7 +23,7 @@ class Run
             elsif v_o_c == "Close"
                 Store.close_store
                 Run.main_menu
-            elsif v_o_c == "Back"
+            elsif v_o_c == "Main Menu"
                 main_menu
             elsif v_o_c == "Exit"
                 exit
@@ -36,7 +36,7 @@ class Run
                 ShopperMenuChoice.shopper_store_choice
             elsif s_o_g == "Gift"
                 ShopperMenuChoice.shopper_gift_choice
-            elsif s_o_g == "Back"
+            elsif s_o_g == "Main Menu"
                 main_menu
             elsif s_o_g == "Exit"
                 exit

@@ -1,3 +1,4 @@
+ActiveRecord::Base.logger = nil
 class OwnerMenuChoice < ActiveRecord::Base
     @@prompt = TTY::Prompt.new
 
@@ -6,7 +7,7 @@ class OwnerMenuChoice < ActiveRecord::Base
             menu.choice "View", "View" 
             menu.choice "Create", "Create"
             menu.choice "Close", "Close"
-            menu.choice "Back", "Back"
+            menu.choice "Main Menu", "Main Menu"
             menu.choice "Exit", "Exit"
         end
     end
@@ -14,16 +15,16 @@ class OwnerMenuChoice < ActiveRecord::Base
     def self.view
         selected_store = Store.view_store
         
-        v_a_e_c = @@prompt.select("You have chosen #{selected_store.name}. Would you like to view the stores items, edit current items, create a new item, or remove an item?", %w(View Edit Add Create Remove))
+        v_a_e_c = @@prompt.select("\nYou have chosen #{selected_store.name}. \nWould you like to view the stores items, edit current items, create a new item, or remove an item?", %w(View Edit Add Create Remove))
         #view, add, edit, create items
         if v_a_e_c == "View"
-            puts "These items are sold in #{selected_store.name}"
+            puts "\nThese items are sold in #{selected_store.name}"
             selected_item = Gift.view_item(selected_store)
             selected_item.item_info(selected_item)
-            self.view
+            Run.main_menu
         
         elsif v_a_e_c == "Edit"
-            puts "These items are sold in #{selected_store.name}"
+            puts "\nThese items are sold in #{selected_store.name}"
             selected_item = @@prompt.select("What item you like to edit?") do | menu | 
                 selected_store.gifts.map do |g| 
                     menu.choice g.name, g
@@ -49,7 +50,7 @@ class OwnerMenuChoice < ActiveRecord::Base
 
     def self.create
         selected_store = Store.create_store
-        a_o_c_items = @@prompt.select("Would you like to add or create items for the store?", %w(Add Create))
+        a_o_c_items = @@prompt.select("\nWould you like to add or create items for the store?", %w(Add Create))
         #add or create items to store
         
         if a_o_c_items == "Add"

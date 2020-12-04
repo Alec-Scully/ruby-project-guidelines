@@ -1,4 +1,5 @@
 #creating a store class
+ActiveRecord::Base.logger = nil
 class Store < ActiveRecord::Base
     has_many :gift_items
     has_many :gifts, through: :gift_items
@@ -10,10 +11,10 @@ class Store < ActiveRecord::Base
             Store.all.map do |s| 
                 menu.choice s.name, s
             end
-            menu.choice "Back", "Back"
+            menu.choice "Main Menu", "Main Menu"
             menu.choice "Exit", "Exit"
         end
-        if selected_store == "Back"
+        if selected_store == "Main Menu"
             Run.main_menu
         elsif selected_store == "Exit"
             exit
@@ -27,10 +28,10 @@ class Store < ActiveRecord::Base
             Store.all.map do |s| 
                 menu.choice s.name, s
             end
-            menu.choice "Back", "Back"
+            menu.choice "Main Menu", "Main Menu"
             menu.choice "Exit", "Exit"
         end
-        if selected_store == "Back"
+        if selected_store == "Main Menu"
             Run.main_menu
         elsif selected_store == "Exit"
             exit
