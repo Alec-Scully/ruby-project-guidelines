@@ -5,6 +5,7 @@ puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 puts "} Welcome to your Holiday Shopping! {"
 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 puts
+#welcome!
 
 class Run
     def self.main_menu
